@@ -148,18 +148,15 @@ public class DoubleLinkedList<T>
    
     	if(toRemove == first){
     		toRemove.getNext().setPrevious(null);
-    		toRemove = toRemove.getNext();
-    		first = toRemove;
+    		first = toRemove.getNext();
     	}
     	else if(toRemove == last){
     		toRemove.getPrevious().setNext(null);
-    		toRemove = toRemove.getPrevious();
-    		last = toRemove;
+    		last = toRemove.getPrevious();
     	}  	
     	else {
     		toRemove.getNext().setPrevious(toRemove.getPrevious());
     		toRemove.getPrevious().setNext(toRemove.getNext());
-    		toRemove = toRemove.getNext();
     	}
     	
     	if(current == toRemove){

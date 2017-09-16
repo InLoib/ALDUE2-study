@@ -136,6 +136,20 @@ public class DoubleLinkedList<T>
     	}	
         return returnValue;
     }
+    
+    public Node<T> getNode(int pos) {
+    	Node<T> searchProcess = first;
+    	int counter = 1;
+    	
+    	while(counter < pos){
+    		searchProcess = searchProcess.getNext();
+    		counter++;
+    	}
+    	if(counter == pos){
+    		return searchProcess;
+    	}
+    	return null;
+    }
 
     /**
      * Entfernen des Elements an der angegebenen Position.
@@ -143,8 +157,7 @@ public class DoubleLinkedList<T>
      * @param pos
      */
     public void remove(int pos) {
-    	T valueToRemove = get(pos);
-    	Node<T> toRemove = new Node<T>(valueToRemove);
+    	Node<T> toRemove = getNode(pos);
    
     	if(toRemove == first){
     		toRemove.getNext().setPrevious(null);

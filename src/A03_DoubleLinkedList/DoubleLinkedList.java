@@ -174,6 +174,11 @@ public class DoubleLinkedList<T>
     	if(current == null){
     		throw new CurrentNotSetException();
     	}
+    	else if(current == first && current == last){
+    		current = null;
+    		last = null;
+    		first = null;
+    	}
     	else if(current == first){
     		current.getNext().setPrevious(null);
     		current = current.getNext();

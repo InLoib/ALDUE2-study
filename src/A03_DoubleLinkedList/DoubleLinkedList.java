@@ -143,7 +143,28 @@ public class DoubleLinkedList<T>
      * @param pos
      */
     public void remove(int pos) {
-
+    	T valueToRemove = get(pos);
+    	Node<T> toRemove = new Node<T>(valueToRemove);
+   
+    	if(toRemove == first){
+    		toRemove.getNext().setPrevious(null);
+    		toRemove = toRemove.getNext();
+    		first = toRemove;
+    	}
+    	else if(toRemove == last){
+    		toRemove.getPrevious().setNext(null);
+    		toRemove = toRemove.getPrevious();
+    		last = toRemove;
+    	}  	
+    	else {
+    		toRemove.getNext().setPrevious(toRemove.getPrevious());
+    		toRemove.getPrevious().setNext(toRemove.getNext());
+    		toRemove = toRemove.getNext();
+    	}
+    	
+    	if(current == toRemove){
+    		current = null;
+    	}
     }
     
     /**

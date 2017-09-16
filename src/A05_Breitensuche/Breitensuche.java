@@ -1,8 +1,11 @@
 package A05_Breitensuche;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Breitensuche extends BaseTree<Integer> {
+	
+	private List<Integer> returnList = new ArrayList<>();
 
 	@Override
 	protected int compare(Integer a, Integer b) {
@@ -15,8 +18,16 @@ public class Breitensuche extends BaseTree<Integer> {
 	 * @return Liste der Knoten in Breitenfolge
 	 */
 	public List<Integer> getBreadthFirstOrder(Node<Integer> start) {
+	
+		returnList.add(start.getValue());
+		if(start.getLeft() != null){
+			getBreadthFirstOrder(start);			
+		}
+		if(start.getRight() != null){
+			getBreadthFirstOrder(start);
+		}	
 
-		return null;
+		return returnList;
 	}
 
 	/**

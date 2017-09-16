@@ -1,5 +1,6 @@
 package A04_TraverseTree;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -9,6 +10,8 @@ public class Wörterbuch {
 	 * Wurzel des Baums (Startknoten)
 	 */
 	private Wort root;
+	private int counter = 1;
+	private Set<String> wordsWithPrefix = new HashSet<>(); // warum??
 	
 	public Wort getRoot() {
 		return root;
@@ -21,7 +24,18 @@ public class Wörterbuch {
 	 */
 	public int countWordsInSubTree(Wort w) {
 		
-		return 0;
+		if(w == null){
+			return 0;
+		}
+		if(w.getLeft() != null){
+			counter++;
+			countWordsInSubTree(w.getLeft());
+		}
+		if(w.getRight() != null){
+			counter++;
+			countWordsInSubTree(w.getRight());
+		}	
+		return counter;
 	}
 
 	/**
@@ -31,8 +45,24 @@ public class Wörterbuch {
 	 */
 	public Set<String> getWordsWithPrefix(String prefix) {
 		
-		return null;
+		getWordsWithPrefix(prefix, root);	
+		
+		return wordsWithPrefix;
 	}
+	
+	public void getWordsWithPrefix(String prefix, Wort actualWort){
+			
+		if(actualWort.getWort().startsWith(prefix)){
+			wordsWithPrefix.add(actualWort.getWort());
+		}
+		if(actualWort.getLeft() != null){
+			getWordsWithPrefix(prefix, actualWort.getLeft());
+		}
+		if(actualWort.getRight() != null){
+			getWordsWithPrefix(prefix, actualWort.getRight());
+		}
+	}
+	
 	
 
 	/**

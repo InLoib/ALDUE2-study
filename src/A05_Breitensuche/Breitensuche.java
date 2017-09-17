@@ -1,11 +1,10 @@
 package A05_Breitensuche;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Breitensuche extends BaseTree<Integer> {
-	
-	private List<Integer> returnList = new ArrayList<>();
 
 	@Override
 	protected int compare(Integer a, Integer b) {
@@ -18,15 +17,22 @@ public class Breitensuche extends BaseTree<Integer> {
 	 * @return Liste der Knoten in Breitenfolge
 	 */
 	public List<Integer> getBreadthFirstOrder(Node<Integer> start) {
-	
-		returnList.add(start.getValue());
-		if(start.getLeft() != null){
-			getBreadthFirstOrder(start);			
-		}
-		if(start.getRight() != null){
-			getBreadthFirstOrder(start);
-		}	
-
+		ArrayDeque<Node<Integer>> queue = new ArrayDeque<>();
+		queue.add(start);
+		List<Integer> returnList = new ArrayList<>();
+		
+		Node<Integer> actualVertic = null;
+		
+		while((actualVertic = queue.poll()) != null){
+			returnList.add(actualVertic.getValue());
+			
+			if(actualVertic.getLeft() !=null){
+				queue.add(actualVertic.getLeft());
+			}
+			if(actualVertic.getRight() !=null){
+				queue.add(actualVertic.getRight());
+			}			
+		}		
 		return returnList;
 	}
 
@@ -38,8 +44,36 @@ public class Breitensuche extends BaseTree<Integer> {
 	 * @return Liste aller Knoten
 	 */
 	public List<Integer> getBreadthFirstOrderForLevel(Node<Integer> start, int level) {
+		ArrayDeque<Node<Integer>> queue = new ArrayDeque<>();
+		queue.add(start);
+		List<Integer> returnList = new ArrayList<>();
+		
+		Node<Integer> acutalVeritc = null;
+		
+		double position = 0.0;
+		int actualLevel = 1;
+		
+		while((acutalVeritc = queue.poll()) != null){
+			position++;
+			
+			actualLevel = (int) (Math.log(position) / Math.log(2.0)+1);
+			
+			if(actualLevel == level){
+				returnList.add(acutalVeritc.getValue());
+			}
+			
+			if(acutalVeritc.getLeft() != null){
+				queue.add(acutalVeritc.getLeft());
+		
+			}
+			if(acutalVeritc.getRight() != null){
+				queue.add(acutalVeritc.getRight());
 
-		return null;
+			}	
+		}
+		
+		
+		return returnList;
 	}
 
 }

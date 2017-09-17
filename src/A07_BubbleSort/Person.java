@@ -41,10 +41,10 @@ public class Person {
 			char thisName = vorname.charAt(i);
 			
 			if(otherName < thisName){
-				return 1;
+				return -1;
 			}
 			if(otherName > thisName){
-				return -1;
+				return 1;
 			}		
 		}		
 		return 0;

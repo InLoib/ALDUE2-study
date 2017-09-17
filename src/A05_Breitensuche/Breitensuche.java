@@ -62,14 +62,16 @@ public class Breitensuche extends BaseTree<Integer> {
 				returnList.add(acutalVeritc.getValue());
 			}
 			
-			if(acutalVeritc.getLeft() != null){
-				queue.add(acutalVeritc.getLeft());
-		
+			else{
+				if(acutalVeritc.getLeft() != null){
+					queue.add(acutalVeritc.getLeft());
+			
+				}
+				if(acutalVeritc.getRight() != null){
+					queue.add(acutalVeritc.getRight());
+	
+				}
 			}
-			if(acutalVeritc.getRight() != null){
-				queue.add(acutalVeritc.getRight());
-
-			}	
 		}
 		
 		

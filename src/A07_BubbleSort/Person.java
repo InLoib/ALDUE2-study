@@ -24,6 +24,29 @@ public class Person {
 	 * @return <0, wenn a<b || =0, wenn a=b || >0, wenn a>b
 	 */
 	public int compareTo(Person p) {
+
+		for (int i = 0; i < p.nachname.length(); i++) {
+			char otherName = p.nachname.charAt(i);
+			char thisName = nachname.charAt(i);
+			
+			if(otherName < thisName){
+				return -1;
+			}
+			if(otherName > thisName){
+				return 1;
+			}	
+		}
+		for (int i = 0; i < p.vorname.length(); i++) {
+			char otherName = p.vorname.charAt(i);
+			char thisName = vorname.charAt(i);
+			
+			if(otherName < thisName){
+				return 1;
+			}
+			if(otherName > thisName){
+				return -1;
+			}		
+		}		
 		return 0;
 	}
 }

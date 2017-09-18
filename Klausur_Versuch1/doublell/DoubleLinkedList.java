@@ -84,9 +84,31 @@ public class DoubleLinkedList {
 	private void insert(int item) {
 		Node n = new Node();
 		n.setData(item);
-		
+
 		// TODO: Schreiben Sie hier ihren Code
 		// n soll nach current eingefügt werden und n wird das neue current
+		
+		if(count == 0){
+			last = n;
+			first = n;
+			current = n;
+		}
+		
+		else if(current == last){
+			current.setNext(n);
+			n.setPrevious(current);
+			last = n;
+			current = n;
+		}
+		else{
+			current.getNext().setPrevious(n);
+			n.setNext(current.getNext());
+			
+			n.setPrevious(current);
+			current.setNext(n);
+			current = n;		
+		}
+		count++;
 	}
 	
 	// TODO
@@ -94,6 +116,35 @@ public class DoubleLinkedList {
 		
 		// TODO: Schreiben Sie hier ihren Code
 		
+		Node n = new Node();
+		n.setData(item);
+		
+		if(current.getData() <= item){
+			insert(item);
+		}
+		else {
+			Node helpCurrent = current;	
+			
+			n.setPrevious(current.getPrevious());
+			n.setNext(current.getNext());
+			
+			if(current == last){
+				current = n;
+				last = current;
+				insert(helpCurrent.getData());
+			}
+			if(current == first){
+				current = n;
+				first = current;
+				insert(helpCurrent.getData());
+			}
+			else{
+				current = n;
+				insert(helpCurrent.getData());
+			}			
+					
+		}
+			
 	}
 	
 	

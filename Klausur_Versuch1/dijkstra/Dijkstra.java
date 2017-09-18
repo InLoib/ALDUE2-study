@@ -22,27 +22,24 @@ public class Dijkstra {
 			kosten[i] = 999999;
 		}
 		
-		
 		List<WeightedEdge> listeKanten = new ArrayList<>();
-		ArrayDeque<WeightedEdge> queue = new ArrayDeque<>();
 		for (int i = 0; i < anzahlKnoten; i++) {
-			listeKanten = g.getEdges(i);
-		}
-		for (WeightedEdge weightedEdge : listeKanten) {
-			
-			if(queue.contains(weightedEdge) != true){
-				queue.add(weightedEdge);
-			}	
+			if(!listeKanten.contains(g.getEdges(i))){
+				listeKanten = g.getEdges(i);
+			}
 		}
 		
 		VertexHeap heap = new VertexHeap(anzahlKnoten);
-		for (int i = 0; i < queue.size(); i++) {
-			heap.insert(queue.poll());
+		
+		for (WeightedEdge weightedEdge : listeKanten) {
+			heap.insert(weightedEdge);
 		}
 		
-		while(heap.isEmpty() != false){
-			
-		}
+		vorgaengerKnoten[von] = -1;
+		kosten[von] = 0;
+		
+		
+		
 		
 		
 		

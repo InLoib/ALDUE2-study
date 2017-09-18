@@ -1,4 +1,4 @@
-package graph_with_parts1;
+package graph_with_parts2;
 
 
 public class PartFinder {

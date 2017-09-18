@@ -1,4 +1,4 @@
-package graph_with_parts1;
+package dijkstra2;
 
 public class WeightedEdge {
 	public int vertex;

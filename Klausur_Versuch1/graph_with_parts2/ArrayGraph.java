@@ -1,4 +1,4 @@
-package graph_with_parts1;
+package graph_with_parts2;
 import java.util.ArrayList;
 import java.util.List;
 

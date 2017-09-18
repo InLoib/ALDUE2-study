@@ -35,11 +35,11 @@ public class Dijkstra {
 					
 					int dist = distanz[actuell.vertex] + perKante.weight;
 					
-					if(dist < distanz[perKante.vertex]){
-						distanz[perKante.vertex] = dist;
-						vorgaenger[perKante.vertex] = actuell.vertex;
+					if(dist < distanz[actuell.vertex]){
+						distanz[actuell.vertex] = dist;
+						vorgaenger[actuell.vertex] = actuell.vertex;
 						
-						heap.setPriority(perKante.vertex, dist);
+						heap.setPriority(actuell.vertex, dist);
 					}					
 				}				
 			}	

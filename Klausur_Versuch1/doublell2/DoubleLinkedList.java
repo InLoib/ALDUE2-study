@@ -87,10 +87,61 @@ public class DoubleLinkedList {
 		
 		// TODO: Schreiben Sie hier ihren Code
 		// n soll nach current eingefügt werden und n wird das neue current
+		
+		if(count == 0){
+			first = n;
+			last = n;
+			current = n;
+		}
+		else if(current == last){
+			current.setNext(n);
+			n.setPrevious(current);
+			last = n;
+			current = n;
+		}
+		else{
+			current.getNext().setPrevious(n);
+			n.setNext(current.getNext());
+			current.setNext(n);
+			n.setPrevious(current);
+			current = n;
+		}
+		count++;
+		
 	}
 	
 	// TODO
 	public void insertSorted(int item) {
+		
+		if(count == 0){
+			insert(item);
+			return;
+		}
+		
+		moveFirst();
+		for (int i = 0; i < count; i++) {
+			if(current.getData() > item){
+				Node neu = new Node();
+				neu.setData(item);
+				current.setPrevious(neu);
+				neu.setNext(current);
+				count++;
+				current = neu;
+				first = neu;
+				return;
+			}
+			if(current == last){
+				insert(item);
+				return;
+			}
+			else if (current.getData() < item && current.getNext().getData() > item){
+				insert(item);
+				return;
+			}
+			moveNext();
+		}
+		
+		
 		
 		// TODO: Schreiben Sie hier ihren Code
 		

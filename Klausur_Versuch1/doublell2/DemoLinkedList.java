@@ -11,6 +11,7 @@ public class DemoLinkedList {
 		dll.insertSorted(3);
 		dll.insertSorted(2);
 		dll.insertSorted(1);
+		dll.insertSorted(6);
 		
 		
 		dll.moveFirst();

@@ -119,30 +119,25 @@ public class DoubleLinkedList {
 		Node n = new Node();
 		n.setData(item);
 		
-		if(current.getData() <= item){
+		if(count == 0){
 			insert(item);
 		}
-		else {
-			Node helpCurrent = current;	
+		
+		moveFirst();
+		
+		for (int i = 0; i < count; i++) {
+			int currentValue = current.getData();
 			
-			n.setPrevious(current.getPrevious());
-			n.setNext(current.getNext());
-			
-			if(current == last){
-				current = n;
-				last = current;
-				insert(helpCurrent.getData());
-			}
-			if(current == first){
-				current = n;
-				first = current;
-				insert(helpCurrent.getData());
-			}
-			else{
-				current = n;
-				insert(helpCurrent.getData());
-			}			
+			if(currentValue < item){
+				if(current.getNext() == null){
+					insert(item);
+				}
+				else if(current.){
 					
+				}
+			}
+			
+			
 		}
 			
 	}

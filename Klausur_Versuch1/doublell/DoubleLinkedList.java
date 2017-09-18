@@ -116,28 +116,34 @@ public class DoubleLinkedList {
 		
 		// TODO: Schreiben Sie hier ihren Code
 		
-		Node n = new Node();
-		n.setData(item);
 		
 		if(count == 0){
 			insert(item);
+			return;
 		}
 		
 		moveFirst();
 		
 		for (int i = 0; i < count; i++) {
-			int currentValue = current.getData();
-			
-			if(currentValue < item){
-				if(current.getNext() == null){
-					insert(item);
-				}
-				else if(current.){
-					
-				}
+			if(current.getData() > item){
+				Node neu = new Node();
+				neu.setData(item);
+				current.setPrevious(neu);
+				neu.setNext(current);
+				first = neu;
+				current = neu;
+				count++;
+				return;
 			}
-			
-			
+			if(current == last){
+				insert(item);
+				return;
+			}
+			else if(current.getData() <= item && current.getNext().getData() >= item){
+				insert(item);
+				return;
+			}
+			moveNext();
 		}
 			
 	}

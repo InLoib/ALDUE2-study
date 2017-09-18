@@ -62,7 +62,7 @@ public class Breitensuche2 extends BaseTree<Integer> {
 		List<Integer> result = new ArrayList<Integer>();
 		queue.add(start);
 		
-		Node<Integer>node;
+//		Node<Integer>node;
 //		double counter =0.0;
 //		
 //		while()
